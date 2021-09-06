@@ -1,6 +1,6 @@
 {
-  "name": "reflex-grid",
-  "version": "2.0.7",
+  "name": "@io.jesi/reflex-grid",
+  "version": "2.0.8",
   "description": "responsive flexbox grid with inline-block legacy support",
   "main": "css/reflex.css",
   "directories": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/leejordan/reflex.git"
+    "url": "https://github.com/jesims/reflex.git"
   },
   "keywords": [
     "reflex",
@@ -22,20 +22,21 @@
   "author": "@leejordan",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/leejordan/reflex/issues"
+    "url": "https://github.com/jesims/reflex/issues"
   },
   "homepage": "reflexgrid.com",
   "scripts": {
     "build": "npm run build:min && npm run build:max",
-    "build:min": "node-sass-chokidar --precision 8 --output-style compressed scss/reflex.scss css/reflex.min.css",
-    "build:max": "node-sass-chokidar --precision 8 --output-style expanded scss/reflex.scss css/reflex.css",
-    "watch": "node-sass-chokidar --watch --recursive --precision 8 --output-style expanded scss/reflex.scss css/reflex.css",
-    "build:docs": "node-sass-chokidar --precision 8 --output-style expanded docs/scss/docs.scss docs/css/docs.css",
-    "watch:docs": "node-sass-chokidar --watch --recursive --precision 8 --output-style expanded docs/scss/docs.scss docs/css/docs.css",
+    "build:min": "sass --style=compressed --source-map scss/reflex.scss css/reflex.min.css",
+    "build:max": "sass --style=expanded --source-map scss/reflex.scss css/reflex.css",
+    "watch": "chokidar scss/*.scss --command 'npm run build:max'",
+    "build:docs": "sass --style=expanded docs/scss/docs.scss docs/css/docs.css",
+    "watch:docs": "chokidar docs/**/*.scss --command 'npm run build:docs'",
     "start": "./node_modules/.bin/http-server ./docs -a localhost -c10"
   },
   "devDependencies": {
-    "http-server": "^0.12.3",
-    "node-sass-chokidar": "^1.5.0"
+    "chokidar-cli": "^3.0.0",
+    "http-server": "^13.0.1",
+    "sass": "^1.39.0"
   }
 }
