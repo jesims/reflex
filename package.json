@@ -26,9 +26,9 @@
   },
   "homepage": "reflexgrid.com",
   "scripts": {
-    "build": "npm run build:min && npm run build:max",
+    "build": "npm run build:max && npm run build:min",
     "build:min": "sass --style=compressed --source-map scss/reflex.scss css/reflex.min.css",
-    "build:max": "sass --style=expanded --source-map scss/reflex.scss css/reflex.css",
+    "build:max": "sass --style=expanded scss/reflex.scss css/reflex.css",
     "watch": "chokidar scss/*.scss --command 'npm run build:max'",
     "build:docs": "sass --style=expanded docs/scss/docs.scss docs/css/docs.css",
     "watch:docs": "chokidar docs/**/*.scss --command 'npm run build:docs'",
